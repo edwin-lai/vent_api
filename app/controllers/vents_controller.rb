@@ -1,11 +1,13 @@
 class VentsController < ApplicationController
   def index
     @vents = Vent.where.not(content: nil).order(created_at: :desc)
-    @vents = @vents.map do |vent|
-      {
-        content: vent['content'],
-        postTime: vent['created_at']
-      }
+    unless @vents.empty?
+      @vents = @vents.map do |vent|
+        {
+          content: vent['content'],
+          postTime: vent['created_at']
+        }
+      end
     end
     render json: @vents
   end
