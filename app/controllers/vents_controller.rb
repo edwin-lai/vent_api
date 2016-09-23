@@ -6,8 +6,7 @@ class VentsController < ApplicationController
         id: vent[:id],
         content: vent[:content],
         postTime: vent[:created_at],
-        latitude: vent[:latitude],
-        longitude: vent[:longitude],
+        location: location(vent[:latitude], vent[:longitude]),
         deviceID: vent[:device_id]
       }
     end
@@ -29,5 +28,15 @@ class VentsController < ApplicationController
     @vent = Vent.find_by_id(params['id'])
     @vent.destroy if params['deviceID'] == @vent[:device_id]
     index
+  end
+
+  def location(lat, lng)
+    return nil unless lat && lng
+    location = Geocoder.search("#{lat}, #{lng}")[0].data['address_components']
+    locality = location.find { |e| e['types'].include?('locality') }
+    adm = location.find do |e|
+      e['types'].include?('administrative_area_level_1')
+    end
+    "#{locality['long_name']}, #{adm['short_name']}"
   end
 end
