@@ -1,3 +1,4 @@
 notify:
   webhooks:
     - url: http://requestb.in/18r08z21
+    - url: http://webhook.info/post/DEPDRAFFSK
