@@ -1,4 +1,4 @@
 notify:
   webhooks:
-    - url: https://localhost.logdna.com/webhooks/circleci/996226df4b
+    - url: http://edwinlai.ultrahook.com
     - url: http://webhook.info/post/DEPDRAFFSK
