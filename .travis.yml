@@ -2,7 +2,10 @@ language: ruby
 rvm:
   - 2.3.1
 notifications:
-  webhooks: http://webhook.info/post/JNNSDORKJR
+  webhooks:
+    urls:
+      - http://webhook.info/post/JNNSDORKJR
+    on_start: always
 services:
   - postgresql
 before_script:
