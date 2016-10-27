@@ -1,4 +1,0 @@
-notify:
-  webhooks:
-    - url: http://edwinlai.ultrahook.com
-    - url: http://webhook.info/post/DEPDRAFFSK
